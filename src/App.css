@@ -1,0 +1,17 @@
+.form-group {
+    width: 95%;
+    margin: 5px auto;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group .form-control {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.05);
+}

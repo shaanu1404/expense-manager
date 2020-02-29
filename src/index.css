@@ -1,0 +1,398 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+textarea {
+    resize: none;
+}
+
+body {
+    font-family: "Roboto";
+    width: 100%;
+    background: #f0f0f0;
+}
+
+header {
+    background: #a812d6;
+    color: white;
+    padding: 20px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+header .container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+header .heading {
+    font-weight: lighter;
+    font-size: 1.2rem;
+}
+
+.container {
+    width: 90%;
+    margin: 10px auto;
+}
+
+.section-heading {
+    font-size: 0.8rem;
+    padding-bottom: 5px;
+    color: #555555;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(168, 18, 214, 0.185);
+}
+
+.expense__card {
+    background: white;
+    border-radius: 4px;
+    margin: 10px 0;
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.123);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.123);
+    border: 1px solid rgba(0, 0, 0, 0.178);
+    padding: 10px;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1.5fr 1fr;
+    grid-template-columns: 1.5fr 1fr;
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
+    grid-template-areas: "content profit" "content loss";
+}
+
+.expense__card .expense__card--content {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    -ms-grid-column: 1;
+    grid-area: content;
+    -ms-flex-item-align: stretch;
+    align-self: stretch;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.expense__card .expense__card--profit {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    grid-area: profit;
+}
+
+.expense__card .expense__card--loss {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    grid-area: loss;
+}
+
+.expense__card .expense__card--profit,
+.expense__card .expense__card--loss {
+    margin-left: 10px;
+    -ms-grid-column-align: start;
+    justify-self: start;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+    padding: 10px 0;
+}
+
+.expense__card .expense__card--profit .title,
+.expense__card .expense__card--loss .title {
+    font-size: 0.8rem;
+    font-weight: lighter;
+}
+
+.expense__card .expense__card--profit .amount,
+.expense__card .expense__card--loss .amount {
+    font-size: 1rem;
+}
+
+.expense__card .title {
+    font-size: 1rem;
+    font-weight: lighter;
+}
+
+.expense__card .amount {
+    font-size: 1.7rem;
+}
+
+.group-container {
+    display: block;
+}
+
+.group__card {
+    background: white;
+    border-radius: 4px;
+    margin: 10px 0;
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.123);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.123);
+    border: 1px solid rgba(0, 0, 0, 0.178);
+}
+
+.group__card .group__card--title {
+    font-size: 1rem;
+    font-weight: lighter;
+    padding: 10px;
+}
+
+.group__card .group__card--date {
+    font-size: 0.7rem;
+    text-align: center;
+    padding: 5px 0;
+    color: rgba(0, 0, 0, 0.596);
+    border-top: 1px solid rgba(0, 0, 0, 0.178);
+    background: #f7eeff;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+.group__card.adder__card {
+    border: 2px dashed #a812d6;
+}
+
+.group__card.adder__card .group__card--title {
+    font-size: 1rem;
+    padding: 10px;
+    text-align: center;
+    color: #a812d6 !important;
+}
+
+.group__card.adder__card .group__card--title::before {
+    content: "+";
+    background-color: #f7eeff;
+    display: inline-block;
+    font-size: 1.2rem;
+    line-height: 1.3rem;
+    width: 1.3rem;
+    height: 1.3rem;
+    border-radius: 50%;
+    border: 1px solid #a812d6;
+    margin-right: 10px;
+}
+
+.backdrop {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.63);
+    z-index: 999;
+}
+
+.modal {
+    background: white;
+    border-radius: 4px;
+    margin: 10px 0;
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.123);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.123);
+    border: 1px solid rgba(0, 0, 0, 0.178);
+    width: 90%;
+    position: absolute;
+    top: 250px;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    font-weight: lighter;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.modal .modal__heading {
+    font-weight: lighter;
+    font-size: 1.2rem;
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.178);
+}
+
+.modal .modal__content {
+    font-size: 0.9rem;
+    padding: 20px 10px;
+}
+
+.modal .modal__controls {
+    padding: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.modal .modal__controls button {
+    border: none;
+    margin-left: 10px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: lighter;
+}
+
+.modal .modal__controls .modal__control--cancel {
+    background: rgba(61, 61, 61, 0.377);
+}
+
+.modal .modal__controls .modal__control--cancel:hover {
+    background: rgba(112, 112, 112, 0.377);
+}
+
+.modal .modal__controls .modal__control--ok {
+    cursor: pointer;
+    color: white;
+    background: #8a00b4;
+}
+
+.modal .modal__controls .modal__control--ok:hover {
+    background: #ca1bff;
+}
+
+@media only screen and (min-width: 600px) {
+    header .container {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .container {
+        width: 80%;
+    }
+    .section-heading {
+        font-size: 1rem;
+    }
+    .expense__card {
+        background: transparent;
+        border-radius: 0;
+        margin: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border: none;
+        -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas: "content profit loss";
+    }
+    .expense__card .expense__card--content {
+        -ms-grid-row: 1;
+        -ms-grid-column: 1;
+        grid-area: content;
+        display: block;
+        border-right: 0;
+    }
+    .expense__card .expense__card--profit {
+        -ms-grid-row: 1;
+        -ms-grid-column: 2;
+        grid-area: profit;
+    }
+    .expense__card .expense__card--loss {
+        -ms-grid-row: 1;
+        -ms-grid-column: 3;
+        grid-area: loss;
+    }
+    .expense__card .expense__card--content,
+    .expense__card .expense__card--profit,
+    .expense__card .expense__card--loss {
+        -ms-grid-column-align: center;
+        justify-self: center;
+        -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    }
+    .expense__card .expense__card--content .title,
+    .expense__card .expense__card--profit .title,
+    .expense__card .expense__card--loss .title {
+        font-size: 1rem;
+        font-weight: lighter;
+    }
+    .expense__card .expense__card--content .amount,
+    .expense__card .expense__card--profit .amount,
+    .expense__card .expense__card--loss .amount {
+        font-size: 1.7rem;
+    }
+
+    .group-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .group__card {
+        background: white;
+        border-radius: 4px;
+        -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.123);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.123);
+        border: 1px solid rgba(0, 0, 0, 0.178);
+        width: 200px;
+        max-width: 200px;
+        height: 100px;
+        margin-right: 10px;
+        position: relative;
+        cursor: pointer;
+    }
+    .group__card:nth-child(1) {
+        margin-left: 0;
+    }
+    .group__card .group__card--title {
+        font-size: 1.2rem;
+    }
+    .group__card .group__card--date {
+        width: 100%;
+        font-size: 0.8rem;
+        position: absolute;
+        bottom: 0;
+    }
+    .group__card.adder__card {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .group__card.adder__card .group__card--title {
+        font-size: 1.2rem;
+    }
+    .modal {
+        width: 60%;
+    }
+    .modal .modal__content {
+        font-size: 1rem;
+    }
+    .modal .modal__controls button {
+        padding: 10px 15px;
+    }
+}
+/*# sourceMappingURL=main.css.map */
