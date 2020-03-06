@@ -47,7 +47,7 @@ class Front extends Component {
                 id: shortid.generate(),
                 name: name.trim(),
                 createdOn: format.asString('dd-MM-yyyy, hh:mm', new Date()),
-                amount: amount,
+                amount: +amount,
                 items: []
             };
 
@@ -70,13 +70,13 @@ class Front extends Component {
                        label="Name"
                        id="name"
                        name="name"
-                       change={this.inputChangedHandler}
+                       inputchange={this.inputChangedHandler}
                        value={this.state.input.name}/>
                 <Input type="number"
                        label="Amount"
                        id="amount"
                        name="amount"
-                       change={this.inputChangedHandler}
+                       inputchange={this.inputChangedHandler}
                        value={this.state.input.amount}/>
             </Fragment>
         );

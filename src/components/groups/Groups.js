@@ -7,7 +7,7 @@ export const Groups = ({groups, addMore}) => (
         <div className="group-container">
             {groups.length > 0 ?
                 groups.map(group =>
-                    <GroupItem key={group.id} title={group.name} date={group.createdOn}/>
+                    <GroupItem key={group.id} id={group.id} title={group.name} date={group.createdOn}/>
                 )
                 : null
             }
